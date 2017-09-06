@@ -1,0 +1,8 @@
+*.vcxproj
+*.filters
+*.lastbuildstate
+*.tlog
+*.log
+*.obj
+*.idb
+*.pdb

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+//-----sorting----------------------------
 void InsertionSort(int* nums, int length)
 {
 	int j, temp;
@@ -66,6 +67,25 @@ void BubbleSort(int* nums, int length)
 
 }
 
+//void MergeSort()
+
+//-----searching--------------------------
+int BinarySearch(int* nums, int value, int left, int right)
+{
+	while (left <= right)
+	{
+		int middle = (left + right) / 2;
+		if (nums[middle] == value)
+			return middle;
+		else if (nums[middle] > value)
+			right = middle - 1;
+		else
+			left = middle + 1;
+	}
+
+	return -1;
+}
+
 //dir: 0=left,1=right
 void ShiftChars(std::string& letters, int length, int amount, int dir)
 {
@@ -103,6 +123,21 @@ void ShiftChars(std::string& letters, int length, int amount, int dir)
 			//move last element
 			letters[0] = last;
 		}
+	}
+}
+
+int FindBiggestNumber(int* nums, int left, int right)
+{
+	int max = 0;
+
+	if (left == right)
+		return nums[left];
+	else
+	{
+		max = FindBiggestNumber(nums, left + 1, right);
+		if (nums[left] > max)
+			return nums[left];
+		else return max;
 	}
 }
 
@@ -164,6 +199,19 @@ int main()
 
 	ShiftChars(letters, 10, 3, 0);
 	std::cout << letters << std::endl;
+
+
+	//---------BINARY SEARCH-----------------
+	std::cout << "\nBinary Search: \n";
+	PrintArray(nums3);
+	std::cout << BinarySearch(nums3, 16, 0, 9);
+
+
+	//---------RECURSION---------------------
+	int nums4[10] = { 10,9,13,22,16,17,55,8,12,5 };
+	std::cout << "\nRecursion: Find Biggest Number: \n";
+	std::cout << FindBiggestNumber(nums4, 0, 9);
+
 
 
 	//wait for input

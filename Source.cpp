@@ -141,6 +141,16 @@ int FindBiggestNumber(int* nums, int left, int right)
 	}
 }
 
+int Fib(int a, int b, int n)
+{
+	if (n == 1)
+		return a;
+	else if (n == 2)
+		return b;
+	else
+		return Fib(a, b, n - 1) + Fib(a, b, n - 2);
+}
+
 void PrintArray(int* nums)
 {
 	for (int i = 0; i < 10; i++)
@@ -204,13 +214,17 @@ int main()
 	//---------BINARY SEARCH-----------------
 	std::cout << "\nBinary Search: \n";
 	PrintArray(nums3);
-	std::cout << BinarySearch(nums3, 16, 0, 9);
+	std::cout << BinarySearch(nums3, 16, 0, 9) << std::endl;
 
 
 	//---------RECURSION---------------------
 	int nums4[10] = { 10,9,13,22,16,17,55,8,12,5 };
 	std::cout << "\nRecursion: Find Biggest Number: \n";
-	std::cout << FindBiggestNumber(nums4, 0, 9);
+	std::cout << FindBiggestNumber(nums4, 0, 9) << std::endl;
+
+	std::cout << "\nRecursion: Fibonacci Sequence: \n";
+	std::cout << "Starting with '1' and '2', find at 7th position:\n";
+	std::cout << Fib(1, 2, 7) << std::endl;
 
 
 
